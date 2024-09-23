@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+    }
+
+    .container {
+        background-color: rgb(212, 209, 209);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input, button{
+        margin: 10px 0;
+            padding: 5px;
+    }
+
+    #result {
+        margin-top: 20px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Conversor de Temperatura</h2>
+        <input type="text" id="celsiusInput" placeholder="Ingrese temperatura en Celsius">
+        <button onclick="convertTemperature()">Convertir</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsiusInput = document.getElementById('celsiusInput');
+            const resultDiv = document.getElementById('result');
+            
+    
+            const celsius = parseFloat(celsiusInput.value);
+            
+            if (isNaN(celsius)) {
+                resultDiv.innerHTML = "Error: Por favor ingrese un número válido.";
+                celsiusInput.value = ''; 
+                return;
+            }
+            
+            
+            const kelvin = celsius + 273.15;
+            
+            
+            const fahrenheit = (celsius * 9/5) + 32;
+            
+            
+            resultDiv.innerHTML = `
+                Grados Kelvin: ${kelvin.toFixed(2)}<br>
+                Grados Fahrenheit: ${fahrenheit.toFixed(2)}
+            `;
+            
+            
+            console.log(`Grados Kelvin: ${kelvin.toFixed(2)}`);
+            console.log(`Grados Fahrenheit: ${fahrenheit.toFixed(2)}`);
+        }
+    </script>
+    
+</body>
+</html>
